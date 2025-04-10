@@ -7,9 +7,14 @@ export const Route = createFileRoute("/")({
 
 function App() {
     return (
-        <div>
+        <div className="app">
             <h1>Choose what you want to learn: </h1>
-            <Link to="/hiragana">Hiragana</Link>
+            <h2>Japanese 🇯🇵</h2>
+            <div>
+                <Link to="/hiragana" className="lesson">
+                    Hiragana
+                </Link>
+            </div>
         </div>
     );
 }
