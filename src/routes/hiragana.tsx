@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { hiragana } from "@/config/hiragana";
+import { hiragana as hiraganaList } from "@/config/hiragana";
 import { useEffect, useRef, useState } from "react";
 import "./css/design.css";
 
@@ -8,11 +8,22 @@ export const Route = createFileRoute("/hiragana")({
 });
 
 function Hiragana() {
+    const [hiragana, setHiragana] = useState<{ [key: string]: string }>({});
     const [currentState, setCurrentState] = useState<number>(0);
     const [submitState, setSubmitState] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState<string>("");
     const [isWrongAnswer, setIsWrongAnswer] = useState<boolean>(false);
     const inputRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        const entries = Object.entries(hiraganaList);
+        for (let i = entries.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [entries[i], entries[j]] = [entries[j], entries[i]];
+        }
+        const shuffledHiragana = Object.fromEntries(entries);
+        setHiragana(shuffledHiragana);
+    }, []);
 
     useEffect(() => {
         const inputField = inputRef.current?.value;
