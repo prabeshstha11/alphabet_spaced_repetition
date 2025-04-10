@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import "./css/design.css";
 
 export const Route = createFileRoute("/hiragana")({
-    component: RouteComponent,
+    component: Hiragana,
 });
 
-function RouteComponent() {
+function Hiragana() {
     const [currentState, setCurrentState] = useState<number>(0);
     const [submitState, setSubmitState] = useState<boolean>(false);
     const [inputValue, setInputValue] = useState<string>("");
