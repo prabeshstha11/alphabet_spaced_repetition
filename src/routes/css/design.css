@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Nanum+Gothic+Coding&display=swap");
+
+.app-ui {
+    display: flex;
+    flex-direction: column;
+    font-size: 3.5rem;
+    gap: 1.25rem;
+    padding: 0.75rem;
+}
+
+.hiragana-character {
+    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+input {
+    height: 3rem;
+    width: 9rem;
+    font-size: 1.5rem;
+    outline: none;
+    border: none;
+    background-color: #333;
+    color: white;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+}
+
+button {
+    height: 3rem;
+    width: 9rem;
+    font-size: 1.5rem;
+    border: none;
+    outline: none;
+    background-color: green;
+    color: floralwhite;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+span,
+input,
+button {
+    font-family: "JetBrains Mono", monospace;
+}
+
+.message {
+    font-size: 1rem;
+    color: red;
+}
