@@ -12,7 +12,7 @@ function App() {
             <h2>Japanese 🇯🇵</h2>
             <div>
                 <Link to="/hiragana" className="lesson">
-                    Hiragana
+                    Hiragana (complete)
                 </Link>
             </div>
         </div>
