@@ -11,20 +11,27 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
-import { Route as HiraganaImport } from './routes/hiragana'
 import { Route as IndexImport } from './routes/index'
+import { Route as KatakanaIndexImport } from './routes/katakana/index'
+import { Route as HiraganaIndexImport } from './routes/hiragana/index'
 
 // Create/Update Routes
-
-const HiraganaRoute = HiraganaImport.update({
-  id: '/hiragana',
-  path: '/hiragana',
-  getParentRoute: () => rootRoute,
-} as any)
 
 const IndexRoute = IndexImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const KatakanaIndexRoute = KatakanaIndexImport.update({
+  id: '/katakana/',
+  path: '/katakana/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const HiraganaIndexRoute = HiraganaIndexImport.update({
+  id: '/hiragana/',
+  path: '/hiragana/',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -39,11 +46,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/hiragana': {
-      id: '/hiragana'
+    '/hiragana/': {
+      id: '/hiragana/'
       path: '/hiragana'
       fullPath: '/hiragana'
-      preLoaderRoute: typeof HiraganaImport
+      preLoaderRoute: typeof HiraganaIndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/katakana/': {
+      id: '/katakana/'
+      path: '/katakana'
+      fullPath: '/katakana'
+      preLoaderRoute: typeof KatakanaIndexImport
       parentRoute: typeof rootRoute
     }
   }
@@ -53,37 +67,42 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/hiragana': typeof HiraganaRoute
+  '/hiragana': typeof HiraganaIndexRoute
+  '/katakana': typeof KatakanaIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/hiragana': typeof HiraganaRoute
+  '/hiragana': typeof HiraganaIndexRoute
+  '/katakana': typeof KatakanaIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/hiragana': typeof HiraganaRoute
+  '/hiragana/': typeof HiraganaIndexRoute
+  '/katakana/': typeof KatakanaIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/hiragana'
+  fullPaths: '/' | '/hiragana' | '/katakana'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/hiragana'
-  id: '__root__' | '/' | '/hiragana'
+  to: '/' | '/hiragana' | '/katakana'
+  id: '__root__' | '/' | '/hiragana/' | '/katakana/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  HiraganaRoute: typeof HiraganaRoute
+  HiraganaIndexRoute: typeof HiraganaIndexRoute
+  KatakanaIndexRoute: typeof KatakanaIndexRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  HiraganaRoute: HiraganaRoute,
+  HiraganaIndexRoute: HiraganaIndexRoute,
+  KatakanaIndexRoute: KatakanaIndexRoute,
 }
 
 export const routeTree = rootRoute
@@ -97,14 +116,18 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/hiragana"
+        "/hiragana/",
+        "/katakana/"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/hiragana": {
-      "filePath": "hiragana.tsx"
+    "/hiragana/": {
+      "filePath": "hiragana/index.tsx"
+    },
+    "/katakana/": {
+      "filePath": "katakana/index.tsx"
     }
   }
 }

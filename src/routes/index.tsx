@@ -10,9 +10,12 @@ function App() {
         <div className="app">
             <h1>Choose what you want to learn: </h1>
             <h2>Japanese 🇯🇵</h2>
-            <div>
+            <div className="lesson-category">
                 <Link to="/hiragana" className="lesson">
                     Hiragana (complete)
+                </Link>
+                <Link to="/katakana" className="lesson">
+                    Katakana (complete)
                 </Link>
             </div>
         </div>

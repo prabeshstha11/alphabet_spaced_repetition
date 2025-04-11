@@ -42,7 +42,7 @@ export default function CharacterQuiz({ characterMap }: CharacterQuizProps) {
     return (
         <div className="app-ui">
             <span className="count">Count: {currentState}</span>
-            <div className="hiragana-character">{shuffledMap[keys[currentState]]}</div>
+            <div className="character">{shuffledMap[keys[currentState]]}</div>
             <form
                 onSubmit={(e) => {
                     e.preventDefault();
