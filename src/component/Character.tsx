@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from "react";
+import "../css/design.css";
 
 type CharacterQuizProps = {
     characterMap: { [key: string]: string };
